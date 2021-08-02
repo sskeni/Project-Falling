@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
   DevAccountEmail: sanchit.keni@gmail.com
-  DevAccountToken: gxkq6ukinwiik954u1wcsexbsxiqcq6xsj6tseizh6his9ssnez39xbtqty7wz91w8f4ik69rarebnocetorep3nmgas9ya1fue56bnszgpox9eo71s3azj84z9c9wc9z1wctpctyf58nershe634bqg5cpuk5bx1skzi7c7n11ab8zuo6u1dty9wndj7mnighhmszcz
-  SelectedStudio: Sanch The Branch Games
+  DevAccountToken: e5y1oiu77c7hzuycqm6yrsew7euep48uq9ck5s9kuqc8sqsymrbk789brdwd8atp3okc4qb3fgztk8bygwufqcrds83fotfbni6itcntkonjfeyptc3r1uamx75qkkc7rqr9scfo8s6xbcw49dfq9jzs6dc77ng7chi5fay9mr5xmq1bszdsej4a9h9wszjqbm9eb6u9
+  SelectedStudio: 
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
   LocalCloudScriptPath: 
   PanelIsShown: 0
-  curMainMenuIdx: 1
+  curMainMenuIdx: 0
   curSubMenuIdx: 0
