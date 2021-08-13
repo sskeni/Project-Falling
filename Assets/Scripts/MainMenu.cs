@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject NamePromptUI;
     public InputField NameInputField;
     public Text DisplayNameText;
+    public Text UsernameError;
 
     private void Awake()
     {
@@ -41,11 +42,20 @@ public class MainMenu : MonoBehaviour
     public void SubmitDisplayName()
     {
         PlayfabManager.instance.SubmitName(NameInputField.text);
-        CloseNamePrompt();
     }
 
     public void UpdateDisplayName(string name)
     {
         DisplayNameText.text = "Logged In As: " + name;
+    }
+
+    public void ShowUsernameError()
+    {
+        UsernameError.gameObject.SetActive(true);
+    }
+
+    public void CloseUsernameError()
+    {
+        UsernameError.gameObject.SetActive(false);
     }
 }

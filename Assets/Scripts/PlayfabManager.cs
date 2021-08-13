@@ -112,12 +112,21 @@ public class PlayfabManager : MonoBehaviour
         {
             DisplayName = name
         };
-        PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnError);
-        MainMenu.instance.UpdateDisplayName(name);
+        PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnDisplayNameError);
     }
 
     void OnDisplayNameUpdate (UpdateUserTitleDisplayNameResult result)
     {
         Debug.Log("Updated display name!");
+        MainMenu.instance.UpdateDisplayName(result.DisplayName);
+        MainMenu.instance.CloseNamePrompt();
+        MainMenu.instance.CloseUsernameError();
+    }
+
+    void OnDisplayNameError(PlayFabError error)
+    {
+        Debug.Log("Error changing display name");
+        Debug.Log(error.GenerateErrorReport());
+        MainMenu.instance.ShowUsernameError();
     }
 }

@@ -11,6 +11,12 @@ public class UIHandler : MonoBehaviour
     public Text ScoreText;
     public Text HighScoreText;
     public Text JumpMultiplierText;
+    public Text ControlsText;
+    public GameObject GameplayUI;
+
+    public Text DeathScoreText;
+    public Text DeathHighScoreText;
+    public Text DeathJumpMultiplierText;
     public GameObject DeathUI;
 
     private float previousPlayerY;
@@ -33,6 +39,7 @@ public class UIHandler : MonoBehaviour
     {
         CalculateScore();
         UpdateUI();
+        CheckControlsUI();
     }
 
     public void AddScore(float value)
@@ -78,6 +85,8 @@ public class UIHandler : MonoBehaviour
 
     public void GameOverUI()
     {
+        UpdateDeathUI();
+        GameplayUI.SetActive(false);
         DeathUI.SetActive(true);
     }
 
@@ -86,5 +95,30 @@ public class UIHandler : MonoBehaviour
         if (instance != null)
             Destroy(gameObject);
         instance = this;
+    }
+
+    private void UpdateDeathUI()
+    {
+        DeathScoreText.text = "Score: " + (int)score;
+        DeathHighScoreText.text = "HighScore: " + (int)highScore;
+        DeathJumpMultiplierText.text = "Jump Multiplier: " + System.Math.Round(PlayerController.instance.getJumpMultiplier(), 2);
+    }
+
+    private void CheckControlsUI()
+    {
+        if (score > 20)
+        {
+            StartCoroutine(FadeOutControlsUI());
+        }
+    }
+
+    private IEnumerator FadeOutControlsUI()
+    {
+        Color originalColor = ControlsText.color;
+        for (float t = 0.01f; t < 1f; t += Time.deltaTime)
+        {
+            ControlsText.color = Color.Lerp(originalColor, Color.clear, Mathf.Min(1, t / 1f));
+            yield return null;
+        }
     }
 }
